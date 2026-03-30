@@ -17,12 +17,13 @@ Golang 实现的随机头像生成器。
 
 ## 效果
 
-![demo1](img/demo1.jpg)
-![demo2](img/demo2.jpg)
-![demo3](img/demo3.jpg)
-![demo4](img/demo4.jpg)
-![demo5](img/demo5.jpg)
-
+<p align="center">
+    <img src="img/demo1.jpg" width="160">
+    <img src="img/demo2.jpg" width="160">
+    <img src="img/demo3.jpg" width="160">
+    <img src="img/demo4.jpg" width="160">
+    <img src="img/demo5.jpg" width="160">
+</p>
 
 ---
 
