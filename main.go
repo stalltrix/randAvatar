@@ -50,11 +50,29 @@ func handler_static(w http.ResponseWriter, r *http.Request) {
 func main() {
 	argc:=len(os.Args)
 	if argc <=1 {
-		log.Println("randAvatar [Listen]")
+		log.Println("randAvatar [Listen] [cert_name]optional")
 		return
 	}
     http.HandleFunc("/avatar", handler)
 	http.HandleFunc("/avatar/", handler_static)
-	log.Println("Listen on",os.Args[1])
-    http.ListenAndServe(os.Args[1], nil)
+
+    addr := os.Args[1]
+	log.Println("Listen on", addr)
+
+    if argc >= 3 {
+        certName := os.Args[2]
+        certFile := certName + ".crt"
+        keyFile := certName + ".key"
+
+        log.Println("TLS enabled:", certFile, keyFile)
+        err := http.ListenAndServeTLS(addr, certFile, keyFile, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+    } else {
+        err := http.ListenAndServe(addr, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
 }
